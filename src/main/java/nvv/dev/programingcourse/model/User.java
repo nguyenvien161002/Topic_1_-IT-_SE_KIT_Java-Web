@@ -2,6 +2,8 @@ package nvv.dev.programingcourse.model;
 
 import jakarta.persistence.*;
 
+import java.util.Date;
+
 @Entity
 @Table(name = "users")
 public class User {
@@ -14,6 +16,8 @@ public class User {
     private String password;
     @Column(length = 45, nullable = false, name = "gender")
     private String gender;
+    @Column(nullable = false, name = "enabled")
+    private boolean enabled;
     @Column(length = 45, nullable = false, name = "first_name")
     private String firstName;
     @Column(length = 45, nullable = false, name = "last_name")
@@ -57,5 +61,21 @@ public class User {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
+    }
+
+    public String getGender() {
+        return gender;
+    }
+
+    public void setGender(String gender) {
+        this.gender = gender;
+    }
+
+    public boolean isEnabled() {
+        return enabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+        this.enabled = enabled;
     }
 }

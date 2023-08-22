@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Login | Multi Programing Course</title>
+    <title>[[${pageTitle}]] | Multi Programing Course</title>
     <link rel="stylesheet" type="text/css" th:href="@{/webjars/bootstrap/5.3.0/css/bootstrap.min.css}">
 </head>
 <body>
@@ -15,21 +15,20 @@
                         <div class="card-body p-4 p-md-5">
                             <div class="row justify-content-center">
                                 <div class="col-md-10 col-lg-6 col-xl-5 order-2 order-lg-1">
-                                    <h3 class="mb-4 pb-2 pb-md-0 mb-md-4">Registration Form</h3>
-                                    <form th:action="@{/register/save}" method="POST" th:object="${user}">
+                                    <h3 class="mb-4 pb-2 pb-md-0 mb-md-4">[[${pageTitle}]]</h3>
+                                    <form th:action="@{/user/save}" method="POST" th:object="${user}">
+                                        <input type="hidden" th:field="*{id}"/>
                                         <div class="row">
                                             <div class="col-md-6 mb-2">
                                                 <div class="form-outline">
                                                     <label class="form-label" for="firstName">First Name</label>
-                                                    <input type="text" id="firstName" th:field="*{firstName}"
-                                                        class="form-control form-control" />
+                                                    <input type="text" id="firstName" th:field="*{firstName}" required minlength="2" maxlength="45" class="form-control form-control" />
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-2">
                                                 <div class="form-outline">
                                                     <label class="form-label" for="lastName">Last Name</label>
-                                                    <input type="text" id="lastName" th:field="*{lastName}"
-                                                           class="form-control form-control" />
+                                                    <input type="text" id="lastName" th:field="*{lastName}" required minlength="2" maxlength="45" class="form-control form-control" />
                                                 </div>
                                             </div>
                                         </div>
@@ -37,26 +36,23 @@
                                         <div class="row">
                                             <div class="col-md-6 mb-2 d-flex align-items-center">
                                                 <div class="form-outline datepicker w-100">
-                                                    <label for="birthdayDate" class="form-label">Birthday</label>
-                                                    <input type="text" class="form-control form-control"
-                                                        id="birthdayDate" />
+                                                    <label for="enabled" class="form-label">Enabled</label>
+                                                    <input class="form-check-input me-2 form-control" type="checkbox" th:field="*{enabled}" id="enabled" />
                                                 </div>
                                             </div>
                                             <div class="col-md-6 mb-2">
                                                 <h6 class="mb-2 pb-1">Gender: </h6>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio"
-                                                        name="female" id="femaleGender" value="option1"
+                                                    <input class="form-check-input" th:field="*{gender}" type="radio" id="femaleGender" value="female"
                                                         checked />
                                                     <label class="form-check-label" for="femaleGender">Female</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio"
-                                                        name="male" id="maleGender" value="option2" />
+                                                    <input class="form-check-input" type="radio" id="maleGender" th:field="*{gender}" value="male" />
                                                     <label class="form-check-label" for="maleGender">Male</label>
                                                 </div>
                                                 <div class="form-check form-check-inline">
-                                                    <input class="form-check-input" type="radio" name="other" id="otherGender" value="option3" />
+                                                    <input class="form-check-input" type="radio" th:field="*{gender}" id="otherGender" value="other" />
                                                     <label class="form-check-label" for="otherGender">Other</label>
                                                 </div>
 
@@ -66,7 +62,7 @@
                                             <div class="col-md-12 mb-2 pb-2">
                                                 <div class="form-outline">
                                                     <label class="form-label" for="emailAddress">Email</label>
-                                                    <input type="email" name="email" id="emailAddress" class="form-control form-control" />
+                                                    <input type="email" th:field="*{email}" required minlength="8" maxlength="45" id="emailAddress" class="form-control form-control" />
                                                 </div>
                                             </div>
                                         </div>
@@ -74,7 +70,7 @@
                                             <div class="col-md-12 mb-2 pb-2">
                                                 <div class="form-outline">
                                                     <label class="form-label" for="password">Password</label>
-                                                    <input type="tel" name="password" id="password" class="form-control form-control" />
+                                                    <input type="password" id="password" th:field="*{password}"  class="form-control" required minlength="5" maxlength="15" />
                                                 </div>
                                             </div>
                                         </div>
@@ -82,7 +78,7 @@
                                             <div class="col-md-12 mb-2 pb-2">
                                                 <div class="form-outline">
                                                     <label class="form-label" for="confirmPassword">Confirm Password</label>
-                                                    <input type="tel" name="confirmPassword" id="confirmPassword" class="form-control form-control" />
+                                                    <input type="password" name="confirmPassword" required minlength="5" maxlength="45" id="confirmPassword" class="form-control form-control" />
                                                 </div>
                                             </div>
                                         </div>

@@ -12,11 +12,14 @@
     <div class="container-fluid text-center mt-2">
         <div class="d-flex align-items-center justify-content-between">
             <h2>Hello, Bootstrap!</h2>
-            <a class="btn btn-primary" href="register">Login</a>
+            <a class="btn btn-primary" href="register">Register</a>
         </div>
         <div class="d-flex align-items-center justify-content-center mt-4 w-100">
             <div class="text-center mt-4 w-75">
                 <h1>Manager Users</h1>
+                <div th:if="${messages}" class="alert text-center alert-success">
+                    [[${messages}]]
+                </div>
                 <div class="mt-4">
                     <table class="table table-striped">
                         <thead>
@@ -25,6 +28,8 @@
                                 <th scope="col">First</th>
                                 <th scope="col">Last</th>
                                 <th scope="col">Email</th>
+                                <th scope="col">Gender</th>
+                                <th scope="col">Enabled</th>
                                 <th scope="col">Handle</th>
                             </tr>
                         </thead>
@@ -34,9 +39,11 @@
                                 <td>[[${user.firstName}]]</td>
                                 <td>[[${user.lastName}]]</td>
                                 <td>[[${user.email}]]</td>
+                                <td>[[${user.gender}]]</td>
+                                <td>[[${user.enabled}]]</td>
                                 <td>
-                                    <a class="btn btn-outline-warning" th:href="@{'/users/edit/' + ${user.id}}">Edit</a>
-                                    <a class="btn btn-outline-danger" th:href="@{'/users/delete/' + ${user.id}}">Delete</a>
+                                    <a class="btn btn-outline-warning" th:href="@{'/user/edit/' + ${user.id}}">Edit</a>
+                                    <a class="btn btn-outline-danger" th:href="@{'/user/delete/' + ${user.id}}">Delete</a>
                                 </td>
                                 </tr>
                             </th:block>
